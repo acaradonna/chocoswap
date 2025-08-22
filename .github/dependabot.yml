@@ -1,0 +1,39 @@
+version: 2
+updates:
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "acaradonna"
+    reviewers:
+      - "acaradonna"
+  
+  # Enable version updates for npm (contracts)
+  - package-ecosystem: "npm"
+    directory: "/contracts"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "acaradonna"
+    reviewers:
+      - "acaradonna"
+    ignore:
+      # Ignore major version updates for stable dependencies
+      - dependency-name: "@openzeppelin/contracts"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "hardhat"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "ethers"
+        update-types: ["version-update:semver-major"]
+  
+  # Enable version updates for npm (frontend - when created)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "acaradonna"
+    reviewers:
+      - "acaradonna"

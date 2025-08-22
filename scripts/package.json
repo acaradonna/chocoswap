@@ -1,0 +1,14 @@
+{
+  "name": "chocoswap-github-setup",
+  "version": "1.0.0",
+  "description": "Scripts to set up GitHub issues and milestones for Chocoswap",
+  "main": "create-github-issues.js",
+  "scripts": {
+    "setup": "node create-github-issues.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  },
+  "author": "Chocoswap Team",
+  "license": "MIT"
+}
