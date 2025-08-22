@@ -39,7 +39,7 @@ npm install   # Takes ~24 seconds with warnings
 
 ### Key Commands and Timing
 
-**CRITICAL BUILD LIMITATION**: `pnpm run build` and `npm run build` **FAIL** due to network restrictions preventing Solidity compiler download from binaries.soliditylang.org. **NEVER CANCEL** - document this limitation instead.
+**CRITICAL BUILD LIMITATION**: `pnpm run build` and `npm run build` **FAIL** due to network restrictions preventing Solidity compiler download from binaries.soliditylang.org. Do not attempt to bypass this limitation; document it as an expected environment constraint.
 
 **Working Commands with Timing:**
 - `pnpm install` - **37 seconds**, 549 packages, network dependent
