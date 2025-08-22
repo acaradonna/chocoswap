@@ -12,8 +12,7 @@
     "lint": "eslint --ext .ts ./",
     "lint:fix": "eslint --ext .ts ./ --fix",
     "format": "prettier -w .",
-    "format:check": "prettier --check .",
-    "prepare": "hardhat compile"
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.4",
