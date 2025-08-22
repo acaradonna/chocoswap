@@ -13,8 +13,7 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia",
-    "verify:sepolia": "hardhat verify --network sepolia",
-    "prepare": "hardhat compile"
+    "verify:sepolia": "hardhat verify --network sepolia"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.4",
