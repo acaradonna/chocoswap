@@ -16,6 +16,7 @@ contracts/typechain*/
 # Env
 .env
 .env.*
+!.env.example
 
 # Logs
 npm-debug.log*
