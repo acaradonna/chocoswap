@@ -1,0 +1,26 @@
+# Editors
+.DS_Store
+.idea/
+.vscode/
+
+# Node/TS
+node_modules/
+dist/
+coverage/
+
+# Hardhat
+contracts/artifacts/
+contracts/cache/
+contracts/typechain*/
+
+# Env
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
