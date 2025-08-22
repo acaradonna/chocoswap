@@ -7,8 +7,8 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   extends: [
-    "@typescript-eslint/eslint-plugin/recommended",
-    "@typescript-eslint/eslint-plugin/stylistic",
+    "eslint:recommended",
+    "@typescript-eslint/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
