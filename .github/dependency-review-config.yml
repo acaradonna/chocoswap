@@ -1,0 +1,20 @@
+vulnerability_check: true
+license_check: true
+fail_on_scopes:
+  - runtime
+  - development
+allow_licenses:
+  - GPL-3.0-or-later
+  - MIT
+  - Apache-2.0
+  - BSD-2-Clause
+  - BSD-3-Clause
+  - ISC
+  - 0BSD
+deny_licenses:
+  - GPL-2.0
+  - LGPL-2.1
+allow_dependencies_licenses:
+  - npm/@openzeppelin/contracts
+  - npm/hardhat
+  - npm/ethers
