@@ -1,0 +1,18 @@
+# Global code owners
+* @acaradonna
+
+# Smart contracts require additional review
+contracts/ @acaradonna
+*.sol @acaradonna
+
+# CI/CD changes require review
+.github/ @acaradonna
+
+# Security-related files require review
+contracts/slither.config.json @acaradonna
+.github/dependency-review-config.yml @acaradonna
+
+# Documentation changes
+docs/ @acaradonna
+README.md @acaradonna
+CONTRIBUTING.md @acaradonna
