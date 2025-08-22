@@ -5,6 +5,7 @@
 
 # Node/TS
 node_modules/
+scripts/node_modules/
 dist/
 coverage/
 
