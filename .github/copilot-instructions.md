@@ -39,17 +39,21 @@ npm install   # Takes ~24 seconds with warnings
 
 ### Key Commands and Timing
 
-**CRITICAL BUILD LIMITATION**: `pnpm run build` and `npm run build` **FAIL** due to network restrictions preventing Solidity compiler download. Document this as: "Build fails due to network restrictions preventing binaries.soliditylang.org access."
+**CRITICAL BUILD LIMITATION**: `pnpm run build` and `npm run build` **FAIL** due to network restrictions preventing Solidity compiler download from binaries.soliditylang.org. **NEVER CANCEL** - document this limitation instead.
 
-**Working Commands:**
-- `pnpm run clean` - Clear artifacts and cache (< 1 second)
-- `pnpm run format` - Prettier formatting (< 1 second, processes 6 files)
-- `pnpm test --no-compile` - Run tests without compilation (1.4 seconds, but requires compiled artifacts)
+**Working Commands with Timing:**
+- `pnpm install` - **37 seconds**, 549 packages, network dependent
+- `npm install` - **24 seconds**, same functionality, more warnings  
+- `pnpm run clean` - **< 1 second**, clears artifacts/cache
+- `pnpm run format` - **< 1 second**, formats 6 files with Prettier
+- `npx hardhat --help` - **< 1 second**, shows available commands
+- `npx hardhat --version` - **< 1 second**, shows version 2.26.3
 
-**Broken Commands:**
-- `pnpm run build` - **FAILS**: Network restriction (getaddrinfo ENOTFOUND binaries.soliditylang.org)
-- `pnpm run test` - **FAILS**: Requires compilation first  
-- `pnpm run lint` - **FAILS**: ESLint not in package.json devDependencies
+**Broken Commands with Error Details:**
+- `pnpm run build` - **FAILS after ~37 seconds**: "Error HH502: Couldn't download compiler version list. Please check your internet connection and try again."
+- `pnpm run test` - **FAILS after 1.4 seconds**: "HH700: Artifact for contract 'ChocoToken' not found" (requires compilation)
+- `pnpm test --no-compile` - **1.4 seconds**: Runs but fails due to missing artifacts
+- `pnpm run lint` - **FAILS immediately**: "eslint: command not found" (missing devDependency)
 
 ### Development Workflow
 1. **NEVER try to compile contracts** - network restrictions prevent Solidity compiler download
@@ -60,8 +64,17 @@ npm install   # Takes ~24 seconds with warnings
 ## Project Components
 
 ### Smart Contracts (`contracts/contracts/`)
-- **ChocoToken.sol**: ERC20 token with initial supply to deployer
-- **FeeSplitter.sol**: Splits protocol fees between service treasury (70%) and founder payout (30%)
+- **ChocoToken.sol**: Simple ERC20 token with Ownable access control
+  - Inherits OpenZeppelin ERC20 and Ownable
+  - Constructor takes initialOwner and initialSupply
+  - Mints entire supply to initialOwner at deployment
+  - No additional functions beyond standard ERC20
+- **FeeSplitter.sol**: Protocol fee distribution contract with configurable splits
+  - Splits any ERC20 token based on basis points (serviceBps/10000)
+  - Default: 7000 BPS = 70% to serviceTreasury, 30% to founderPayout
+  - Owner can update addresses and split ratios via `update()`
+  - Anyone can trigger distribution via `splitToken(address)`
+  - Emits events for transparency: SplitterUpdated, FeesSplit
 
 ### Tests (`contracts/test/`)
 - **ChocoToken.test.ts**: Basic ERC20 functionality tests
@@ -80,6 +93,11 @@ npm install   # Takes ~24 seconds with warnings
 1. **Code Review**: Check Solidity syntax, security patterns, and OpenZeppelin usage
 2. **Architecture Validation**: Ensure contracts follow documented patterns in docs/ARCHITECTURE.md
 3. **TypeScript Validation**: Verify test structure and typing in test files
+4. **Contract Security Review**: 
+   - ChocoToken: Verify ERC20 + Ownable inheritance, initial supply minting
+   - FeeSplitter: Check access controls, zero address validation, BPS calculations
+   - Look for: proper event emission, CEI pattern, no reentrancy vulnerabilities
+5. **Test Coverage Analysis**: Ensure all contract functions have corresponding tests
 
 ### Pre-Commit Checklist
 1. **ALWAYS run `pnpm run format`** - required for code style
