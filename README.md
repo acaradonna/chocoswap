@@ -128,6 +128,26 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 - Frontend code: [MIT License](./LICENSE)
 - Smart contracts: GPL-3.0-or-later (due to Uniswap v2 dependency)
 
+## 🔧 Troubleshooting
+
+### Build Issues
+
+**Network/DNS Resolution Errors**
+
+If you encounter errors like `getaddrinfo ENOTFOUND binaries.soliditylang.org` when building:
+
+The contracts build system has been configured to work offline using a local Solidity compiler (solcjs) instead of downloading from external sources. This should work automatically, but if you encounter issues:
+
+1. Ensure dependencies are installed: `cd contracts && npm install`
+2. Use the offline build system: `npm run build` (uses local solcjs compilation)
+3. For tests: `npm run test` (builds first, then runs tests with `--no-compile`)
+
+The build system creates Hardhat-compatible artifacts in `contracts/artifacts/` and cache files in `contracts/cache/`.
+
+**Linting Warnings**
+
+TypeScript version warnings from ESLint are informational and don't affect functionality. The codebase works with the installed TypeScript version.
+
 ## 🏷️ Project Milestones and Issues
 
 This project uses structured milestones and issues for development tracking:

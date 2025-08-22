@@ -4,9 +4,9 @@
   "private": true,
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "build": "hardhat compile",
+    "build": "node scripts/compile.js",
     "clean": "hardhat clean",
-    "test": "hardhat test",
+    "test": "npm run build && hardhat test --no-compile",
     "coverage": "hardhat coverage",
     "lint": "eslint --ext .ts ./ && solhint 'contracts/**/*.sol'",
     "lint:fix": "eslint --ext .ts ./ --fix && solhint 'contracts/**/*.sol' --fix",
