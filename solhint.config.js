@@ -1,0 +1,30 @@
+module.exports = {
+  extends: "solhint:default",
+  rules: {
+    "compiler-version": ["error", "^0.8.0"],
+    "func-visibility": ["warn", { ignoreConstructors: true }],
+    "max-line-length": ["error", 120],
+    "not-rely-on-time": "off",
+    "avoid-suicide": "error",
+    "avoid-sha3": "warn",
+    "bracket-align": "off",
+    "code-complexity": ["warn", 8],
+    "const-name-snakecase": "off",
+    "contract-name-camelcase": "error",
+    "event-name-camelcase": "error",
+    "func-name-mixedcase": "error",
+    "func-order": "warn",
+    "func-param-name-mixedcase": "error",
+    "modifier-name-mixedcase": "error",
+    "private-vars-leading-underscore": "warn",
+    "use-forbidden-name": "error",
+    "var-name-mixedcase": "error",
+    "quotes": ["error", "double"],
+    "no-console": "warn",
+    "no-empty-blocks": "error",
+    "no-unused-vars": "error",
+    "payable-fallback": "error",
+    "reason-string": ["warn", { maxLength: 64 }],
+    "constructor-syntax": "error"
+  }
+};

@@ -1,0 +1,21 @@
+# Repository Owners and Code Reviewers
+
+# Global owners - these users are the default owners for everything in the repo
+* @acaradonna
+
+# Contracts - require review from contracts experts
+/contracts/ @acaradonna
+
+# Frontend - require review from frontend experts  
+/frontend/ @acaradonna
+
+# Documentation - require review for docs changes
+/docs/ @acaradonna
+*.md @acaradonna
+
+# CI/CD and GitHub workflows
+/.github/ @acaradonna
+
+# Security-sensitive files
+/contracts/contracts/ @acaradonna
+/contracts/scripts/ @acaradonna

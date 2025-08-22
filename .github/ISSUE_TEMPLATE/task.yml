@@ -1,0 +1,72 @@
+name: Development Task
+description: Create a development task for the roadmap
+title: ""
+labels: ["type:task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for creating development tasks from the roadmap.
+  - type: input
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which milestone does this task belong to?
+      placeholder: e.g., M1, M2, M3...
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: Detailed description of the task
+      placeholder: What needs to be implemented or completed?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this task is complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which area does this task focus on?
+      options:
+        - contracts
+        - frontend
+        - devops
+        - ci
+        - docs
+        - security
+        - testing
+        - deployment
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What's the priority of this task?
+      options:
+        - low
+        - medium
+        - high
+        - critical
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Does this task depend on other tasks or issues?
+      placeholder: List any dependencies or blockers
+    validations:
+      required: false
