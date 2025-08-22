@@ -155,21 +155,42 @@ npm install   # Takes ~24 seconds with warnings
 - Documentation: `docs/`
 - Project config: `contracts/hardhat.config.ts`, `contracts/package.json`
 
-### Package.json Scripts
+### Essential Commands for Development
+```bash
+# Setup (run once)
+cd contracts/ && pnpm install
+
+# Before making changes
+pnpm run format  # Format code with Prettier
+
+# Validation commands (manual review only)
+npx hardhat --help              # List available tasks
+cat contracts/ChocoToken.sol    # Review token contract  
+cat contracts/FeeSplitter.sol   # Review fee splitter
+cat test/ChocoToken.test.ts     # Review test structure
+```
+
+### Package.json Scripts Status
 ```json
 {
   "build": "hardhat compile",        // FAILS - network restriction
-  "clean": "hardhat clean",          // Works
+  "clean": "hardhat clean",          // ✅ Works - < 1 second
   "test": "hardhat test",            // FAILS - needs compilation  
   "lint": "eslint --ext .ts ./",     // FAILS - missing dependency
-  "format": "prettier -w .",        // Works
+  "format": "prettier -w .",        // ✅ Works - < 1 second
   "prepare": "hardhat compile"       // FAILS - network restriction
 }
 ```
 
 ### Dependencies Status
 - ✅ **Hardhat**: v2.26.3 installed and working
-- ✅ **OpenZeppelin**: v5.1.0 available
+- ✅ **OpenZeppelin**: v5.4.0 available  
 - ✅ **Prettier**: v3.6.2 working for formatting
+- ✅ **Ethers**: v6.15.0 for contract interactions
 - ❌ **ESLint**: Missing from devDependencies
 - ❌ **Solidity Compiler**: Cannot download due to network restrictions
+
+### Network Configuration
+- **Default**: Hardhat Network (local development)
+- **Testnet**: Sepolia (configured but not accessible without compilation)
+- **Environment**: Requires `.env` file for Sepolia RPC URL and private key
